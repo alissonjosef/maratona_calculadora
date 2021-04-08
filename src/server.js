@@ -2,11 +2,15 @@ const express = require("express")
 
 const server = express()
 
+const routes = require("./routes")
 
-// resquesr, response
-server.get('/',(request, response) => {
-  
+// usando templete engine
+server.set('view engine', 'ejs')
 
-  return response.send('Oie!!!!!')
-})
-server.listen(3000, () => console.log('Rodando'))
+// Habilitar arquivo statics
+server.use(express.static("public"))
+
+//routes
+server.use(routes)
+//Windows + . para aparecer emoji
+server.listen(3000, () => console.log('Rodando ⏰ 🚀'))
